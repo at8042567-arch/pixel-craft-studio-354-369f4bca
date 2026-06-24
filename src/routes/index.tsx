@@ -152,30 +152,39 @@ function Index() {
           <a className="nav-link" href="#contact">Contact</a>
         </div>
 
-        <a href="#contact" className="btn-primary hidden md:inline-flex" style={{ padding: "10px 22px", fontSize: 11, letterSpacing: "0.15em", textDecoration: "none" }}>
+        <a href="#contact" className="btn-nav hidden md:inline-flex">
           Start a Project
         </a>
 
         <button
-          aria-label="Menu"
-          onClick={() => setMobileOpen(true)}
-          className="md:hidden"
-          style={{ background: "transparent", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", gap: 5, padding: 8 }}
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((o) => !o)}
+          className={`hamburger md:hidden${mobileOpen ? " is-open" : ""}`}
         >
-          <span style={{ width: 24, height: 1, background: "#fff" }} />
-          <span style={{ width: 24, height: 1, background: "#fff" }} />
-          <span style={{ width: 24, height: 1, background: "#fff" }} />
+          <span className="line line-1" />
+          <span className="line line-2" />
+          <span className="line line-3" />
         </button>
       </nav>
 
-      {mobileOpen && (
-        <div style={{ position: "fixed", inset: 0, background: "#000", zIndex: 200, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 32, animation: "fade-in 0.3s ease" }}>
-          <button onClick={() => setMobileOpen(false)} aria-label="Close" style={{ position: "absolute", top: 24, right: 24, background: "transparent", border: "none", color: "#fff", fontSize: 24, cursor: "pointer" }}>×</button>
-          {["Work", "Process", "About", "Contact"].map((l) => (
-            <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setMobileOpen(false)} className="font-display" style={{ color: "#fff", fontSize: 48, textDecoration: "none", letterSpacing: "0.02em" }}>{l}</a>
+      <div className={`mobile-menu-overlay${mobileOpen ? " is-open" : ""}`} aria-hidden={!mobileOpen}>
+        <nav style={{ width: "100%" }}>
+          {[
+            { n: "01", l: "Work", h: "#work" },
+            { n: "02", l: "Process", h: "#process" },
+            { n: "03", l: "About", h: "#about" },
+            { n: "04", l: "Contact", h: "#contact" },
+            { n: "05", l: "Start a Project", h: "#contact" },
+          ].map((item) => (
+            <div key={item.n} className="menu-item">
+              <span className="menu-number">{item.n}</span>
+              <a href={item.h} className="menu-link" onClick={() => setMobileOpen(false)}>{item.l}</a>
+            </div>
           ))}
-        </div>
-      )}
+        </nav>
+        <div className="menu-contact">Arenextechworks@gmail.com · +92 343 424 7850</div>
+      </div>
 
       {/* HERO */}
       <section id="hero" className="hero-glow" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "#000" }}>
@@ -205,9 +214,14 @@ function Index() {
             Custom web development for startups and businesses that are serious about growth. No templates. No shortcuts. Built from scratch, engineered to convert.
           </p>
 
-          <div style={{ marginTop: 48, display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="#contact" className="hero-cta btn-primary" style={{ textDecoration: "none" }}>Begin Your Project →</a>
-            <a href="#work" className="hero-cta btn-ghost" style={{ textDecoration: "none" }}>See Our Work</a>
+          <div className="hero-cta-row" style={{ marginTop: 48, display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="#contact" className="hero-cta btn-primary">
+              <span>Begin Your Project</span>
+              <span className="arrow">→</span>
+            </a>
+            <a href="#work" className="hero-cta btn-secondary">
+              <span>See Our Work</span>
+            </a>
           </div>
         </div>
 
@@ -428,15 +442,15 @@ function Index() {
                     <option value="usd">International USD</option>
                   </select>
                 </div>
-                <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center", padding: 18, marginTop: 48, fontSize: 12, letterSpacing: "0.15em" }}>
+                <button type="submit" className="btn-submit" style={{ marginTop: 48 }}>
                   Send Message →
                 </button>
               </>
             )}
             {submitted && (
               <div style={{ padding: "60px 0", textAlign: "center" }}>
-                <div className="btn-primary" style={{ display: "inline-flex", cursor: "default" }}>
-                  SENT. WE'LL RESPOND WITHIN 24H ✓
+                <div className="btn-primary" style={{ cursor: "default" }}>
+                  <span>Sent. We'll respond within 24h ✓</span>
                 </div>
               </div>
             )}
