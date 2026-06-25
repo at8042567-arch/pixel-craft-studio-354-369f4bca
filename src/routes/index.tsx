@@ -18,9 +18,21 @@ export const Route = createFileRoute("/")({
 });
 
 const AXLogo = ({ size = 36, color = "white" }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M40 6 L68 24 L68 50 L40 74 L12 50 L12 24 Z" stroke={color} strokeWidth="1.4" fill="none" />
-    <path d="M28 42 L40 28 L52 42 L44 42 L44 56 L36 56 L36 42 Z" fill={color} />
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 1254 1254"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="AreneX Techworks"
+    role="img"
+  >
+    <g transform="translate(0,1254) scale(0.1,-0.1)" fill={color} stroke="none">
+      <path d="M6215 9518 c-38 -22 -189 -111 -335 -196 -146 -85 -323 -189 -395 -232 -580 -344 -1119 -663 -1442 -853 l-153 -89 0 -854 c0 -470 2 -854 4 -854 3 0 60 73 127 163 67 89 133 175 146 190 l23 29 0 572 0 572 238 140 c130 78 359 213 507 301 806 478 1304 772 1333 787 l33 17 72 -44 c87 -54 1064 -629 1521 -896 l330 -193 174 75 174 75 -193 115 c-107 63 -260 153 -341 201 -82 47 -214 125 -295 173 -82 47 -251 147 -378 221 -126 74 -354 207 -505 296 -424 250 -556 326 -566 326 -5 -1 -40 -19 -79 -42z" />
+      <path d="M5519 8143 c-78 -109 -165 -229 -194 -268 -143 -194 -202 -276 -331 -454 -161 -223 -341 -473 -419 -581 -75 -104 -344 -467 -614 -830 -125 -168 -270 -363 -321 -434 -52 -70 -132 -178 -177 -240 -46 -61 -83 -114 -83 -118 0 -9 625 -11 690 -2 l50 7 127 171 c70 94 319 428 553 741 234 314 446 598 470 632 199 273 393 533 399 533 4 0 39 -46 79 -102 39 -57 164 -229 276 -383 113 -154 206 -283 206 -287 0 -5 -138 -8 -307 -8 l-308 0 -170 -207 c-93 -113 -191 -231 -217 -262 l-48 -56 720 -5 720 -5 165 -225 c91 -124 222 -303 291 -397 l125 -173 411 0 c327 0 409 3 401 13 -5 6 -39 50 -75 97 -209 273 -1260 1674 -1488 1985 -80 108 -281 381 -447 606 -167 225 -309 418 -315 429 -7 11 -16 20 -19 20 -4 0 -71 -89 -150 -197z" />
+      <path d="M8689 8063 c-42 -43 -161 -170 -264 -283 -104 -113 -277 -299 -384 -414 -108 -115 -196 -216 -195 -225 0 -14 235 -314 353 -451 l30 -35 224 225 c402 405 1199 1219 1214 1240 l14 20 -458 0 -458 0 -76 -77z" />
+      <path d="M6730 7364 c0 -5 255 -339 500 -654 287 -369 441 -570 775 -1009 110 -145 238 -313 285 -375 l86 -111 386 -3 c212 -1 402 1 422 5 l37 8 -98 121 c-112 139 -119 148 -541 659 -590 714 -839 1018 -1027 1252 l-90 113 -367 0 c-203 0 -368 -2 -368 -6z" />
+      <path d="M7985 4844 c-126 -75 -383 -226 -570 -334 -331 -192 -526 -306 -922 -539 -106 -62 -196 -111 -200 -108 -4 2 -154 91 -333 197 -470 279 -506 301 -820 488 -504 300 -677 401 -693 408 -12 4 -471 -49 -512 -60 -5 -1 22 -21 60 -43 322 -185 718 -418 1275 -748 360 -213 739 -436 841 -495 l186 -107 264 152 c145 83 332 192 414 240 150 88 522 305 645 376 36 20 297 173 580 338 283 165 520 302 525 305 6 2 7 6 4 10 -5 5 -212 28 -454 51 l-60 5 -230 -136z" />
+    </g>
   </svg>
 );
 
@@ -198,8 +210,8 @@ function Index() {
       {/* HERO */}
       <section id="hero" className="hero-glow" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "#000" }}>
         <div className="hero-grid" />
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", opacity: 0.03 }}>
-          <AXLogo size={600} />
+        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", opacity: 0.03, zIndex: 0 }}>
+          <AXLogo size={500} />
         </div>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 40%, #000 90%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "30%", background: "linear-gradient(to top, #000 0%, transparent 100%)", pointerEvents: "none" }} />

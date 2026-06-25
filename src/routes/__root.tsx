@@ -92,6 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" },
+      { rel: "icon", type: "image/png", href: "/__l5e/assets-v1/1e648a00-75b3-48a2-a383-181d30683d54/arenex-logo.png" },
       {
         rel: "stylesheet",
         href: appCss,
