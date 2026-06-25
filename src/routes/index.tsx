@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import zaraShot from "@/assets/zara-boutique.png.asset.json";
+import lahoreShot from "@/assets/lahore-eats.png.asset.json";
+import pakinvestShot from "@/assets/pakinvest.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -392,12 +395,12 @@ function Index() {
 
           <div className="reveal-stagger" style={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {[
-              { type: "E-COMMERCE · 2025", name: "Zara Boutique", desc: "A fashion e-commerce store built from scratch for a Lahore-based boutique. Custom cart, Stripe checkout, inventory management — zero Shopify.", stack: "Next.js · PostgreSQL · Stripe · Vercel", result: "+340% online revenue in 90 days", viz: "grid" },
-              { type: "WEB APPLICATION · 2025", name: "Lahore Eats", desc: "A restaurant platform for online orders, table bookings, and real-time kitchen management. Built for scale from day one.", stack: "React · Node.js · WebSockets · Supabase", result: "0 → 800 orders/month at launch", viz: "lines" },
-              { type: "SAAS DASHBOARD · 2025", name: "PakInvest", desc: "An investment tracking dashboard for Pakistani retail investors. Real-time data, clean charts, authentication, and a mobile-first layout.", stack: "Next.js · Chart.js · PostgreSQL · Auth.js", result: "2,400 users, month one", viz: "bars" },
+              { type: "E-COMMERCE · 2025", name: "Zara Boutique", desc: "A fashion e-commerce store built from scratch for a Lahore-based boutique. Custom cart, Stripe checkout, inventory management — zero Shopify.", stack: "Next.js · PostgreSQL · Stripe · Vercel", result: "+340% online revenue in 90 days", img: zaraShot.url, alt: "Zara Boutique e-commerce website built by AreneX Techworks" },
+              { type: "WEB APPLICATION · 2025", name: "Lahore Eats", desc: "A restaurant platform for online orders, table bookings, and real-time kitchen management. Built for scale from day one.", stack: "React · Node.js · WebSockets · Supabase", result: "0 → 800 orders/month at launch", img: lahoreShot.url, alt: "Lahore Eats restaurant platform built by AreneX Techworks" },
+              { type: "SAAS DASHBOARD · 2025", name: "PakInvest", desc: "An investment tracking dashboard for Pakistani retail investors. Real-time data, clean charts, authentication, and a mobile-first layout.", stack: "Next.js · Chart.js · PostgreSQL · Auth.js", result: "2,400 users, month one", img: pakinvestShot.url, alt: "PakInvest investment dashboard built by AreneX Techworks" },
             ].map((p) => (
-              <div key={p.name} className="card-surface" style={{ padding: 64, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", minHeight: 420 }}>
-                <div>
+              <div key={p.name} className="project-card card-surface">
+                <div className="project-info">
                   <div className="label-mono">{p.type}</div>
                   <h3 style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: 36, color: "#fff", margin: "16px 0 16px", letterSpacing: "-0.015em" }}>{p.name}</h3>
                   <p style={{ fontFamily: "Outfit", fontWeight: 300, fontSize: 16, color: "#666", lineHeight: 1.7, maxWidth: 380, margin: 0 }}>{p.desc}</p>
@@ -406,22 +409,16 @@ function Index() {
                     {p.result}
                   </div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
-                  {p.viz === "grid" && (
-                    <div className="viz-grid">
-                      {Array.from({ length: 12 }).map((_, i) => <div key={i} />)}
+                <div className="project-screenshot">
+                  <div className="browser-frame">
+                    <div className="browser-bar">
+                      <div className="browser-dots"><span /><span /><span /></div>
+                      <div className="browser-url">arenextechworks.com/work</div>
                     </div>
-                  )}
-                  {p.viz === "lines" && (
-                    <div className="viz-lines">
-                      {Array.from({ length: 7 }).map((_, i) => <div key={i} />)}
+                    <div className="browser-content">
+                      <img src={p.img} alt={p.alt} loading="lazy" />
                     </div>
-                  )}
-                  {p.viz === "bars" && (
-                    <div className="viz-bars" style={{ width: "100%" }}>
-                      {Array.from({ length: 7 }).map((_, i) => <div key={i} />)}
-                    </div>
-                  )}
+                  </div>
                 </div>
               </div>
             ))}

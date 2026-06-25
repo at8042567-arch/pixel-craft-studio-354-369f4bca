@@ -491,3 +491,109 @@
   from { transform: scaleY(0.3); }
   to { transform: scaleY(1); }
 }
+
+/* Project card with real screenshots */
+.project-card {
+  display: flex;
+  flex-direction: row;
+  min-height: 520px;
+  overflow: hidden;
+}
+.project-info {
+  width: 55%;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.project-screenshot {
+  position: relative;
+  width: 45%;
+  overflow: hidden;
+  background: #0D0D0D;
+  border-left: 1px solid #1C1C1C;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 32px 0;
+}
+.project-screenshot::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to top, #0D0D0D, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+.browser-frame {
+  border: 1px solid #222;
+  background: #111;
+  overflow: hidden;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+}
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #0A0A0A;
+  border-bottom: 1px solid #1C1C1C;
+  flex-shrink: 0;
+}
+.browser-dots { display: flex; gap: 5px; }
+.browser-dots span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #2A2A2A;
+  display: block;
+}
+.browser-url {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: #2A2A2A;
+  letter-spacing: 0.05em;
+  flex: 1;
+  text-align: center;
+}
+.browser-content {
+  overflow: hidden;
+  max-height: 420px;
+}
+.browser-content img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.8s ease;
+}
+.project-card:hover .browser-content img {
+  transform: translateY(-20%);
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+    min-height: 0;
+  }
+  .project-info {
+    width: 100%;
+    padding: 40px 28px;
+  }
+  .project-screenshot {
+    width: 100%;
+    border-left: none;
+    border-bottom: 1px solid #1C1C1C;
+    padding: 0;
+    align-items: stretch;
+    height: auto;
+  }
+  .project-screenshot::after { height: 60px; }
+  .browser-frame { max-width: 100%; border: none; }
+  .browser-content { max-height: 220px; }
+  .browser-content img { height: 220px; object-fit: cover; object-position: top center; }
+}
