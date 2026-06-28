@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AreneX Techworks | Custom Web Development — Pakistan</title>
+<meta name="description" content="AreneX Techworks builds custom websites and web applications for startups and businesses in Pakistan. Built from scratch. Get a proposal in 48 hours." />
+<meta property="og:title" content="AreneX Techworks | Custom Web Development Pakistan" />
+<meta property="og:description" content="Custom websites and web apps for businesses serious about growth." />
+<link rel="icon" href="https://pixel-craft-studio-354.lovable.app/__l5e/assets-v1/1e648a00-75b3-48a2-a383-181d30683d54/arenex-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --black:#000;--black-soft:#080808;--black-card:#0E0E0E;
+  --border:#161616;--border-light:#222;--white:#fff;
+  --text-primary:#fff;--text-secondary:#888;--text-muted:#3A3A3A;
+}
+*{box-sizing:border-box;border-color:var(--border);}
+html{scroll-behavior:smooth;background:#000;}
+body{margin:0;background:#000;color:#fff;font-family:"Outfit",sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+::selection{background:#fff;color:#000;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+.font-display{font-family:"Bebas Neue",sans-serif;}
+.font-mono{font-family:"DM Mono",monospace;}
+.label-mono{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);}
+
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 100%,transparent 30%,#000 80%);mask-image:radial-gradient(ellipse 90% 70% at 50% 100%,transparent 30%,#000 80%);animation:gridMove 20s linear infinite;pointer-events:none;}
+@keyframes gridMove{from{background-position:0 0;}to{background-position:80px 80px;}}
+.hero-glow::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,255,255,.05) 0%,transparent 70%);animation:breathe 8s ease-in-out infinite alternate;pointer-events:none;}
+@keyframes breathe{from{opacity:.4;transform:scale(1);}to{opacity:1;transform:scale(1.05);}}
+.scroll-line{width:1px;height:40px;background:#fff;transform-origin:top;animation:scrollDrop 2s ease-in-out infinite;display:block;}
+@keyframes scrollDrop{0%{transform:scaleY(0);transform-origin:top;opacity:0;}50%{transform:scaleY(1);transform-origin:top;opacity:1;}100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}}
+
+.nav-link{position:relative;color:#888;font-size:13px;font-weight:400;transition:color .25s ease;text-decoration:none;}
+.nav-link::after{content:'';position:absolute;left:0;bottom:-6px;width:100%;height:1px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .25s ease;}
+.nav-link:hover{color:#fff;}
+.nav-link:hover::after{transform:scaleX(1);}
+
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:transparent;color:#fff;font-family:"DM Mono",monospace;font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);cursor:pointer;position:relative;overflow:hidden;transition:color .3s ease,border-color .3s ease;text-decoration:none;white-space:nowrap;}
+.btn-primary::before{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:0;}
+.btn-primary:hover::before{transform:translateX(0);}
+.btn-primary:hover{color:#000;border-color:#fff;}
+.btn-primary>*{position:relative;z-index:1;}
+.btn-primary .arrow{display:inline-block;transition:transform .3s ease;}
+.btn-primary:hover .arrow{transform:translateX(4px);}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:#444;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #1e1e1e;cursor:pointer;transition:color .3s ease,border-color .3s ease;text-decoration:none;white-space:nowrap;}
+.btn-secondary:hover{color:#fff;border-color:rgba(255,255,255,.25);}
+.btn-nav{display:inline-flex;align-items:center;padding:9px 18px;background:transparent;color:#fff;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);cursor:pointer;transition:background .25s,color .25s,border-color .25s;text-decoration:none;white-space:nowrap;}
+.btn-nav:hover{background:#fff;color:#000;border-color:#fff;}
+.btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px 28px;background:#fff;color:#000;font-family:"DM Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;border:1px solid #fff;cursor:pointer;transition:background .25s,color .25s;}
+.btn-submit:hover{background:transparent;color:#fff;}
+@media (max-width:768px){.btn-primary,.btn-secondary{padding:12px 22px;font-size:9px;letter-spacing:.15em;}}
+
+.hamburger{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:5px;width:32px;height:32px;cursor:pointer;background:transparent;border:none;padding:0;z-index:1000;position:relative;}
+.hamburger .line{display:block;height:1px;background:#fff;transition:all .4s cubic-bezier(.4,0,.2,1);transform-origin:center;}
+.hamburger .line-1{width:24px;}.hamburger .line-2{width:16px;}.hamburger .line-3{width:24px;}
+.hamburger.is-open .line-1{width:24px;transform:translateY(6px) rotate(45deg);}
+.hamburger.is-open .line-2{width:0;opacity:0;transform:scaleX(0);}
+.hamburger.is-open .line-3{width:24px;transform:translateY(-6px) rotate(-45deg);}
+
+.mobile-menu-overlay{position:fixed;inset:0;background:#000;z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 40px;clip-path:inset(0 0 100% 0);transition:clip-path .6s cubic-bezier(.4,0,.2,1);}
+.mobile-menu-overlay.is-open{clip-path:inset(0 0 0% 0);}
+.mobile-menu-overlay .menu-link{font-family:"Bebas Neue",sans-serif;font-size:52px;color:#fff;text-decoration:none;line-height:1.1;letter-spacing:.02em;display:block;margin-bottom:8px;opacity:0;transform:translateY(30px);transition:opacity .4s ease,transform .4s ease,color .2s ease;}
+.mobile-menu-overlay.is-open .menu-link{opacity:1;transform:translateY(0);}
+.mobile-menu-overlay.is-open .menu-item:nth-child(1) .menu-link{transition-delay:.15s;}
+.mobile-menu-overlay.is-open .menu-item:nth-child(2) .menu-link{transition-delay:.22s;}
+.mobile-menu-overlay.is-open .menu-item:nth-child(3) .menu-link{transition-delay:.29s;}
+.mobile-menu-overlay.is-open .menu-item:nth-child(4) .menu-link{transition-delay:.36s;}
+.mobile-menu-overlay.is-open .menu-item:nth-child(5) .menu-link{transition-delay:.43s;}
+.mobile-menu-overlay .menu-link:hover{color:rgba(255,255,255,.3);}
+.mobile-menu-overlay .menu-number{font-family:"DM Mono",monospace;font-size:9px;color:#2a2a2a;letter-spacing:.15em;display:block;margin-bottom:4px;opacity:0;transition:opacity .3s ease;}
+.mobile-menu-overlay.is-open .menu-number{opacity:1;transition-delay:.4s;}
+.mobile-menu-overlay .menu-contact{position:absolute;bottom:48px;left:40px;right:40px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.15em;color:#2a2a2a;text-transform:uppercase;opacity:0;transition:opacity .4s ease .5s;}
+.mobile-menu-overlay.is-open .menu-contact{opacity:1;}
+
+.card-surface{background:var(--black-card);border:1px solid var(--border);transition:border-color .3s ease,transform .3s ease;}
+.card-surface:hover{border-color:#333;transform:translateY(-4px);}
+
+.cursor-dot{position:fixed;top:0;left:0;width:6px;height:6px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:width .2s ease,height .2s ease,opacity .2s ease;transform:translate(-50%,-50%);}
+.cursor-dot.is-hover{width:24px;height:24px;opacity:.4;}
+@media (hover:none){.cursor-dot{display:none;}}
+
+.field{position:relative;border-bottom:1px solid var(--border);transition:border-color .25s ease;}
+.field:focus-within{border-bottom-color:#555;}
+.field label{position:absolute;left:0;top:28px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);pointer-events:none;transition:all .25s ease;}
+.field input,.field textarea,.field select{width:100%;background:transparent;border:none;outline:none;color:#fff;font-family:"Outfit",sans-serif;font-weight:300;font-size:17px;padding:40px 0 16px;caret-color:#fff;resize:none;}
+.field select option{background:#000;color:#fff;}
+.field:focus-within label,.field.has-value label{top:8px;font-size:9px;color:#fff;}
+
+.timeline-step{position:relative;padding-left:48px;padding-bottom:56px;border-left:1px solid var(--border);transition:border-color .3s ease;}
+.timeline-step:hover{border-left-color:#fff;}
+.timeline-step::before{content:'';position:absolute;left:-5px;top:4px;width:9px;height:9px;background:#fff;border-radius:50%;box-shadow:0 0 0 4px #000;}
+.diff-block{border-left:2px solid var(--border);padding-left:28px;margin-bottom:36px;transition:border-color .3s ease;}
+.diff-block:hover{border-left-color:#fff;}
+
+.project-card{display:flex;flex-direction:row;min-height:520px;overflow:hidden;}
+.project-info{width:55%;padding:64px;display:flex;flex-direction:column;justify-content:center;}
+.project-screenshot{position:relative;width:45%;overflow:hidden;background:#0D0D0D;border-left:1px solid #1C1C1C;display:flex;align-items:flex-start;justify-content:center;padding:32px 32px 0;}
+.project-screenshot::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,#0D0D0D,transparent);pointer-events:none;z-index:2;}
+.browser-frame{border:1px solid #222;background:#111;overflow:hidden;width:100%;max-width:460px;display:flex;flex-direction:column;}
+.browser-bar{display:flex;align-items:center;gap:12px;padding:8px 16px;background:#0A0A0A;border-bottom:1px solid #1C1C1C;flex-shrink:0;}
+.browser-dots{display:flex;gap:5px;}
+.browser-dots span{width:8px;height:8px;border-radius:50%;background:#2A2A2A;display:block;}
+.browser-url{font-family:"DM Mono",monospace;font-size:9px;color:#2A2A2A;letter-spacing:.05em;flex:1;text-align:center;}
+.browser-content{overflow:hidden;max-height:420px;}
+.browser-content img{width:100%;height:auto;display:block;object-fit:cover;object-position:top center;transition:transform .8s ease;}
+.project-card:hover .browser-content img{transform:translateY(-20%);}
+@media (max-width:768px){
+  .project-card{flex-direction:column;min-height:0;}
+  .project-info{width:100%;padding:40px 28px;}
+  .project-screenshot{width:100%;border-left:none;border-bottom:1px solid #1C1C1C;padding:0;align-items:stretch;height:auto;}
+  .project-screenshot::after{height:60px;}
+  .browser-frame{max-width:100%;border:none;}
+  .browser-content{max-height:220px;}
+  .browser-content img{height:220px;object-fit:cover;object-position:top center;}
+}
+
+/* layout helpers */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;background:transparent;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s;}
+.nav.scrolled{background:rgba(0,0,0,.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom-color:#161616;}
+.nav-links{display:flex;gap:36px;}
+@media (max-width:768px){.nav{padding:0 20px;}.nav-links,.nav .btn-nav{display:none;}}
+@media (min-width:769px){.hamburger{display:none;}}
+.hero-cta-row{margin-top:48px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="#hero" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;">
+    <img src="https://pixel-craft-studio-354.lovable.app/__l5e/assets-v1/1e648a00-75b3-48a2-a383-181d30683d54/arenex-logo.png" alt="AreneX" width="32" height="32" style="filter:invert(0);" />
+    <span style="font-family:Outfit;font-weight:500;font-size:13px;letter-spacing:.3em;">ARENEX</span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#work">Work</a>
+    <a class="nav-link" href="#process">Process</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="btn-nav">Start a Project</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span class="line line-1"></span><span class="line line-2"></span><span class="line line-3"></span>
+  </button>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <nav style="width:100%;">
+    <div class="menu-item"><span class="menu-number">01</span><a href="#work" class="menu-link">Work</a></div>
+    <div class="menu-item"><span class="menu-number">02</span><a href="#process" class="menu-link">Process</a></div>
+    <div class="menu-item"><span class="menu-number">03</span><a href="#about" class="menu-link">About</a></div>
+    <div class="menu-item"><span class="menu-number">04</span><a href="#contact" class="menu-link">Contact</a></div>
+    <div class="menu-item"><span class="menu-number">05</span><a href="#contact" class="menu-link">Start a Project</a></div>
+  </nav>
+  <div class="menu-contact">Arenextechworks@gmail.com · +92 343 424 7850</div>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="hero-glow" style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000;">
+  <div class="hero-grid"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:.03;z-index:0;">
+    <img src="https://pixel-craft-studio-354.lovable.app/__l5e/assets-v1/1e648a00-75b3-48a2-a383-181d30683d54/arenex-logo.png" alt="" width="500" height="500" />
+  </div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,#000 90%);pointer-events:none;"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(to top,#000 0%,transparent 100%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:2;text-align:center;padding:0 24px;max-width:1200px;">
+    <div class="hero-eyebrow label-mono" style="margin-bottom:32px;">WEB DEVELOPMENT STUDIO &nbsp;·&nbsp; PAKISTAN</div>
+    <h1 class="font-display" style="font-size:clamp(56px,11vw,140px);line-height:.95;letter-spacing:.02em;color:#fff;margin:0;">
+      <span class="hero-word" style="display:inline-block;margin-right:.3em;">WE</span><span class="hero-word" style="display:inline-block;">BUILD</span><br/>
+      <span class="hero-word" style="display:inline-block;margin-right:.3em;">WEBSITES</span><span class="hero-word" style="display:inline-block;margin-right:.3em;">THAT</span><br/>
+      <span class="hero-word" style="display:inline-block;">WORK.</span>
+    </h1>
+    <p class="hero-sub" style="font-family:Outfit;font-weight:300;font-size:18px;color:#888;max-width:480px;margin:32px auto 0;line-height:1.7;">
+      Custom web development for startups and businesses that are serious about growth. No templates. No shortcuts. Built from scratch, engineered to convert.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="hero-cta btn-primary"><span>Begin Your Project</span><span class="arrow">→</span></a>
+      <a href="#work" class="hero-cta btn-secondary"><span>See Our Work</span></a>
+    </div>
+  </div>
+  <div class="hero-scroll" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:16px;">
+    <span style="font-family:'DM Mono';font-size:9px;letter-spacing:.2em;color:#2A2A2A;">SCROLL</span>
+    <span class="scroll-line"></span>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section style="background:#000;padding:180px 24px;text-align:center;">
+  <div class="rule" style="width:60px;height:1px;background:#222;margin:0 auto 80px;"></div>
+  <div style="max-width:900px;margin:0 auto;">
+    <h2 class="reveal" style="font-family:Outfit;font-weight:200;font-size:clamp(28px,4vw,48px);line-height:1.4;color:#fff;margin:0;">Most agencies build you a website.</h2>
+    <h2 class="reveal" style="font-family:Outfit;font-weight:600;font-size:clamp(28px,4vw,48px);line-height:1.4;color:#fff;margin:8px 0 0;">We build you a revenue machine.</h2>
+    <p class="reveal" style="font-family:Outfit;font-weight:300;font-size:16px;color:#444;margin:24px auto 0;max-width:480px;line-height:1.7;">Every line of code we write is in service of one goal: turning your visitors into customers.</p>
+    <div class="reveal-stagger" style="margin-top:100px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;">
+      <div style="border-top:1px solid #161616;padding-top:32px;text-align:left;">
+        <div class="stat-num" data-target="48" data-suffix="H" style="font-family:Outfit;font-weight:600;font-size:52px;color:#fff;">0H</div>
+        <div class="label-mono" style="margin-top:12px;">Proposal Turnaround</div>
+      </div>
+      <div style="border-top:1px solid #161616;padding-top:32px;text-align:left;">
+        <div class="stat-num" data-target="100" data-suffix="%" style="font-family:Outfit;font-weight:600;font-size:52px;color:#fff;">0%</div>
+        <div class="label-mono" style="margin-top:12px;">Custom Code</div>
+      </div>
+      <div style="border-top:1px solid #161616;padding-top:32px;text-align:left;">
+        <div style="font-family:Outfit;font-weight:600;font-size:52px;color:#fff;">∞</div>
+        <div class="label-mono" style="margin-top:12px;">Support After Launch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:#080808;padding:140px 48px;position:relative;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="max-width:680px;margin-bottom:80px;">
+      <div class="label-mono reveal">WHAT WE BUILD</div>
+      <h2 class="reveal" style="font-family:Outfit;font-weight:600;font-size:clamp(34px,5vw,52px);color:#fff;line-height:1.1;margin:16px 0 0;letter-spacing:-.02em;">One service.<br/>Done exceptionally well.</h2>
+      <p class="reveal" style="font-family:Outfit;font-weight:300;font-size:17px;color:#666;max-width:520px;margin-top:20px;line-height:1.75;">We don't do logos, SEO packages, or social media. We do one thing — build high-performance custom websites and web applications — and we do it better than anyone else in Pakistan.</p>
+    </div>
+    <div class="reveal-stagger" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;">
+      <div class="card-surface" style="padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;">
+        <div><div class="label-mono">01</div><h3 style="font-family:Outfit;font-weight:500;font-size:22px;color:#fff;margin:32px 0 0;">Business Websites</h3><p style="font-family:Outfit;font-weight:300;font-size:15px;color:#666;line-height:1.7;margin-top:12px;">For businesses that need a credible, fast, professional web presence. Landing pages, corporate sites, service businesses.</p></div>
+        <div class="label-mono" style="margin-top:32px;">Next.js · Tailwind · Vercel</div>
+      </div>
+      <div class="card-surface" style="padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;">
+        <div><div class="label-mono">02</div><h3 style="font-family:Outfit;font-weight:500;font-size:22px;color:#fff;margin:32px 0 0;">E-Commerce Stores</h3><p style="font-family:Outfit;font-weight:300;font-size:15px;color:#666;line-height:1.7;margin-top:12px;">Online stores built to sell. Custom product pages, checkout flows, and payment integration — no Shopify templates.</p></div>
+        <div class="label-mono" style="margin-top:32px;">React · Stripe · PostgreSQL</div>
+      </div>
+      <div class="card-surface" style="padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;">
+        <div><div class="label-mono">03</div><h3 style="font-family:Outfit;font-weight:500;font-size:22px;color:#fff;margin:32px 0 0;">Web Applications</h3><p style="font-family:Outfit;font-weight:300;font-size:15px;color:#666;line-height:1.7;margin-top:12px;">Complex platforms, dashboards, admin panels, SaaS tools. If it needs a login screen, we build it right.</p></div>
+        <div class="label-mono" style="margin-top:32px;">Full-Stack · REST APIs · Cloud</div>
+      </div>
+      <div class="card-surface" style="padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;">
+        <div><div class="label-mono">04</div><h3 style="font-family:Outfit;font-weight:500;font-size:22px;color:#fff;margin:32px 0 0;">Landing Pages</h3><p style="font-family:Outfit;font-weight:300;font-size:15px;color:#666;line-height:1.7;margin-top:12px;">Single-purpose pages engineered to convert. A/B-tested layouts, blazing-fast load times, zero fluff.</p></div>
+        <div class="label-mono" style="margin-top:32px;">React · Framer Motion · Analytics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:#000;padding:140px 48px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="margin-bottom:100px;max-width:680px;">
+      <div class="label-mono reveal">HOW WE WORK</div>
+      <h2 class="reveal" style="font-family:Outfit;font-weight:200;font-size:clamp(34px,5vw,56px);color:#fff;line-height:1.05;margin:16px 0 0;letter-spacing:-.02em;">From first message<br/><span style="font-weight:600;">to live website.</span></h2>
+    </div>
+    <div style="max-width:720px;" id="timeline">
+      <!-- steps injected by script -->
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="about" style="background:#080808;padding:140px 48px;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:80px;">
+    <div>
+      <div class="label-mono reveal">WHY US</div>
+      <h2 class="reveal" style="font-family:Outfit;font-weight:600;font-size:clamp(34px,4.5vw,48px);color:#fff;line-height:1.1;margin:16px 0 0;letter-spacing:-.02em;">We write code<br/>like our name<br/>depends on it.</h2>
+      <p class="reveal" style="font-family:Outfit;font-weight:300;font-size:17px;color:#666;line-height:1.8;margin-top:24px;max-width:460px;">Because it does. We're a small, focused studio in Pakistan with a single obsession: building web products that perform. We don't take on projects we can't do well. We don't pad timelines. And we don't disappear after handing over your files.</p>
+    </div>
+    <div id="diffs"></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" style="background:#000;padding:140px 48px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:100px;max-width:680px;">
+      <div class="label-mono reveal">SELECTED WORK</div>
+      <h2 class="reveal" style="font-family:Outfit;font-weight:200;font-size:clamp(40px,6vw,64px);color:#fff;line-height:1.05;margin:16px 0 0;letter-spacing:-.02em;">Built to <span style="font-weight:700;">perform.</span></h2>
+    </div>
+    <div class="reveal-stagger" id="projects" style="display:flex;flex-direction:column;gap:2px;"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#000;padding:140px 24px;min-height:90vh;position:relative;overflow:hidden;">
+  <div class="hero-grid" style="opacity:.5;"></div>
+  <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center;">
+    <div class="label-mono reveal">GET IN TOUCH</div>
+    <h2 class="font-display reveal" style="font-size:clamp(52px,9vw,96px);line-height:.95;color:#fff;margin:24px 0 0;letter-spacing:.02em;">LET'S BUILD<br/>SOMETHING<br/>GREAT.</h2>
+    <p class="reveal" style="font-family:Outfit;font-weight:300;font-size:18px;color:#555;max-width:440px;margin:32px auto 0;line-height:1.7;">Tell us about your project. We'll have a detailed proposal in your inbox within 48 hours.</p>
+
+    <form id="contactForm" style="margin-top:64px;max-width:580px;margin-left:auto;margin-right:auto;text-align:left;">
+      <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
+      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
+      <div class="field"><label for="company">Company / Project Name</label><input id="company" name="company" type="text" required /></div>
+      <div class="field"><label for="msg">Tell us about your project</label><textarea id="msg" name="msg" rows="5" required></textarea></div>
+      <div class="field">
+        <label for="budget">Budget Range</label>
+        <select id="budget" name="budget" required>
+          <option value="" disabled hidden selected></option>
+          <option value="u50">Under PKR 50K</option>
+          <option value="50-150">PKR 50–150K</option>
+          <option value="150-500">PKR 150–500K</option>
+          <option value="500+">PKR 500K+</option>
+          <option value="usd">International USD</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit" style="margin-top:48px;">Send via WhatsApp →</button>
+    </form>
+    <div id="successMsg" style="padding:60px 0;text-align:center;display:none;">
+      <div class="btn-primary" style="cursor:default;"><span>Opened in WhatsApp — hit send to reach us ✓</span></div>
+    </div>
+
+    <div style="margin-top:80px;border-top:1px solid #111;padding-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;">
+      <a href="mailto:Arenextechworks@gmail.com" class="label-mono" style="text-decoration:none;letter-spacing:.12em;">Arenextechworks@gmail.com</a>
+      <a href="tel:+923434247850" class="label-mono" style="text-decoration:none;letter-spacing:.12em;">+92 343 424 7850</a>
+      <div class="label-mono" style="letter-spacing:.12em;">Pakistan · Worldwide</div>
+    </div>
+    <div style="margin-top:32px;display:flex;justify-content:center;gap:16px;">
+      <a href="https://instagram.com/arenextechworks" target="_blank" rel="noreferrer" class="label-mono" style="text-decoration:none;letter-spacing:.12em;">@arenextechworks · IG</a>
+      <span class="label-mono">·</span>
+      <a href="https://x.com/arenextechworks" target="_blank" rel="noreferrer" class="label-mono" style="text-decoration:none;letter-spacing:.12em;">@arenextechworks · X</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#000;border-top:1px solid #0D0D0D;padding:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="https://pixel-craft-studio-354.lovable.app/__l5e/assets-v1/1e648a00-75b3-48a2-a383-181d30683d54/arenex-logo.png" alt="AreneX" width="24" height="24" />
+    <span style="font-family:Outfit;font-weight:500;font-size:12px;letter-spacing:.3em;color:#fff;">ARENEX TECHWORKS</span>
+  </div>
+  <div style="font-family:'DM Mono';font-size:9px;color:#222;letter-spacing:.1em;">© 2026 AreneX Techworks. All rights reserved.</div>
+  <a href="https://instagram.com/arenextechworks" class="label-mono" style="text-decoration:none;font-size:9px;letter-spacing:.1em;">@arenextechworks</a>
+</footer>
+
+<script>
+/* ----- Data injection: timeline, diffs, projects ----- */
+const TIMELINE = [
+  {n:"01",t:"Discovery",b:"DAY 1–2",d:"You tell us what you're building and who it's for. We ask the uncomfortable questions — the ones most agencies skip."},
+  {n:"02",t:"Proposal",b:"DAY 2–3",d:"A detailed proposal arrives within 48 hours. Scope, timeline, price. No ambiguity. No surprises."},
+  {n:"03",t:"Design",b:"WEEK 1–2",d:"We design your site in Figma before writing a single line of code. You approve the look before the build begins."},
+  {n:"04",t:"Development",b:"WEEK 2–4",d:"Clean, documented code. Weekly check-ins. You can see progress every step of the way."},
+  {n:"05",t:"Launch",b:"WEEK 4–6",d:"QA, speed-tested, and live. Plus 30 days of post-launch support — because launch day is just the beginning."}
+];
+document.getElementById("timeline").innerHTML = TIMELINE.map(s=>`
+  <div class="timeline-step reveal">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;">
+      <div class="label-mono">${s.n}</div><div class="label-mono">${s.b}</div>
+    </div>
+    <h3 style="font-family:Outfit;font-weight:500;font-size:22px;color:#fff;margin:16px 0 12px;">${s.t}</h3>
+    <p style="font-family:Outfit;font-weight:300;font-size:15px;color:#666;line-height:1.75;margin:0;max-width:560px;">${s.d}</p>
+  </div>`).join("");
+
+const DIFFS = [
+  {t:"Pakistan's timezone. International standards.",d:"We work in your market's context with the quality of a London studio."},
+  {t:"You own 100% of your code.",d:"Full handover. No vendor lock-in. Ever."},
+  {t:"No templates were harmed in our process.",d:"Every pixel is written for your project, nobody else's."},
+  {t:"We respond in hours, not days.",d:"Because a client waiting for an answer is a client losing money."}
+];
+document.getElementById("diffs").innerHTML = DIFFS.map(d=>`
+  <div class="diff-block reveal">
+    <div style="font-family:Outfit;font-weight:500;font-size:16px;color:#fff;">${d.t}</div>
+    <div style="font-family:Outfit;font-weight:300;font-size:14px;color:#666;margin-top:8px;line-height:1.6;">${d.d}</div>
+  </div>`).join("");
+
+const BASE = "https://pixel-craft-studio-354.lovable.app";
+const PROJECTS = [
+  {type:"E-COMMERCE · 2025",name:"Zara Boutique",desc:"A fashion e-commerce store built from scratch for a Lahore-based boutique. Custom cart, Stripe checkout, inventory management — zero Shopify.",stack:"Next.js · PostgreSQL · Stripe · Vercel",result:"+340% online revenue in 90 days",img:BASE+"/__l5e/assets-v1/f6098708-3659-4164-8570-82ca1250d571/zara-boutique.png",alt:"Zara Boutique e-commerce website built by AreneX Techworks"},
+  {type:"WEB APPLICATION · 2025",name:"Lahore Eats",desc:"A restaurant platform for online orders, table bookings, and real-time kitchen management. Built for scale from day one.",stack:"React · Node.js · WebSockets · Supabase",result:"0 → 800 orders/month at launch",img:BASE+"/__l5e/assets-v1/97ee226e-df47-4ab9-867b-9ff7beee9263/lahore-eats.png",alt:"Lahore Eats restaurant platform built by AreneX Techworks"},
+  {type:"SAAS DASHBOARD · 2025",name:"PakInvest",desc:"An investment tracking dashboard for Pakistani retail investors. Real-time data, clean charts, authentication, and a mobile-first layout.",stack:"Next.js · Chart.js · PostgreSQL · Auth.js",result:"2,400 users, month one",img:BASE+"/__l5e/assets-v1/6840eb7e-f4ba-4250-a862-34502c009b47/pakinvest.png",alt:"PakInvest investment dashboard built by AreneX Techworks"}
+];
+document.getElementById("projects").innerHTML = PROJECTS.map(p=>`
+  <div class="project-card card-surface">
+    <div class="project-info">
+      <div class="label-mono">${p.type}</div>
+      <h3 style="font-family:Outfit;font-weight:600;font-size:36px;color:#fff;margin:16px 0;letter-spacing:-.015em;">${p.name}</h3>
+      <p style="font-family:Outfit;font-weight:300;font-size:16px;color:#666;line-height:1.7;max-width:380px;margin:0;">${p.desc}</p>
+      <div class="label-mono" style="margin-top:32px;">${p.stack}</div>
+      <div style="font-family:Outfit;font-weight:500;font-size:14px;color:#fff;margin-top:16px;padding-top:16px;border-top:1px solid #161616;display:inline-block;padding-right:32px;">${p.result}</div>
+    </div>
+    <div class="project-screenshot">
+      <div class="browser-frame">
+        <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">arenextechworks.com/work</div></div>
+        <div class="browser-content"><img src="${p.img}" alt="${p.alt}" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>`).join("");
+
+/* ----- Navbar scroll ----- */
+const nav = document.getElementById("nav");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 80));
+
+/* ----- Hamburger / mobile menu ----- */
+const hb = document.getElementById("hamburger");
+const overlay = document.getElementById("mobileMenu");
+function setMenu(open){
+  hb.classList.toggle("is-open", open);
+  overlay.classList.toggle("is-open", open);
+  document.body.style.overflow = open ? "hidden" : "";
+}
+hb.addEventListener("click", () => setMenu(!overlay.classList.contains("is-open")));
+overlay.querySelectorAll(".menu-link").forEach(a => a.addEventListener("click", () => setMenu(false)));
+addEventListener("keydown", e => { if(e.key==="Escape") setMenu(false); });
+
+/* ----- Floating-label state ----- */
+document.querySelectorAll(".field input,.field textarea,.field select").forEach(el => {
+  const sync = () => el.closest(".field").classList.toggle("has-value", !!el.value);
+  el.addEventListener("input", sync); el.addEventListener("change", sync);
+});
+
+/* ----- Form -> WhatsApp ----- */
+const BUDGET = {u50:"Under PKR 50K","50-150":"PKR 50–150K","150-500":"PKR 150–500K","500+":"PKR 500K+",usd:"International USD"};
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  const d = new FormData(f);
+  const lines = [
+    "Hi AreneX — new project inquiry","",
+    `Name: ${d.get("name")||""}`,
+    `Email: ${d.get("email")||""}`,
+    `Company / Project: ${d.get("company")||""}`,
+    `Budget: ${BUDGET[d.get("budget")]||""}`,
+    "","Project details:", d.get("msg")||""
+  ];
+  window.open(`https://wa.me/923434247850?text=${encodeURIComponent(lines.join("\n"))}`,"_blank","noopener");
+  f.style.display = "none";
+  document.getElementById("successMsg").style.display = "block";
+});
+
+/* ----- Custom cursor ----- */
+(() => {
+  const dot = document.getElementById("cursorDot");
+  let mx=0,my=0,cx=0,cy=0;
+  addEventListener("mousemove", e => { mx=e.clientX; my=e.clientY; });
+  addEventListener("mouseover", e => {
+    dot.classList.toggle("is-hover", !!e.target.closest("a,button,input,textarea,select,.card-surface"));
+  });
+  (function loop(){ cx+=(mx-cx)*.18; cy+=(my-cy)*.18; dot.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
+})();
+
+/* ----- GSAP animations ----- */
+if (window.gsap) {
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({defaults:{ease:"power2.out"}});
+  tl.from(".nav",{y:-20,opacity:0,duration:.6})
+    .from(".hero-eyebrow",{y:20,opacity:0,duration:.6},.3)
+    .from(".hero-word",{y:50,opacity:0,duration:.8,stagger:.08},.4)
+    .from(".hero-sub",{y:20,opacity:0,duration:.6},.9)
+    .from(".hero-cta",{y:20,opacity:0,duration:.6,stagger:.1},1.1)
+    .from(".hero-scroll",{opacity:0,duration:.6},1.4);
+
+  gsap.utils.toArray(".reveal").forEach(el => {
+    gsap.from(el,{y:30,opacity:0,duration:.9,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 85%"}});
+  });
+  gsap.utils.toArray(".reveal-stagger").forEach(parent => {
+    gsap.from(parent.children,{y:40,opacity:0,scale:.97,duration:.8,stagger:.12,ease:"power2.out",scrollTrigger:{trigger:parent,start:"top 80%"}});
+  });
+  gsap.utils.toArray(".rule").forEach(el => {
+    gsap.from(el,{scaleX:0,transformOrigin:"left",duration:.9,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 90%"}});
+  });
+  gsap.utils.toArray(".stat-num").forEach(el => {
+    const target = parseInt(el.dataset.target||"0",10); if(!target) return;
+    const obj = {v:0};
+    gsap.to(obj,{v:target,duration:2,ease:"power2.out",
+      scrollTrigger:{trigger:el,start:"top 85%"},
+      onUpdate:() => { el.textContent = Math.round(obj.v) + (el.dataset.suffix||""); }
+    });
+  });
+}
+</script>
+</body>
+</html>
