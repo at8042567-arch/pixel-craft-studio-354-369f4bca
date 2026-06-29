@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import zaraShot from "@/assets/zara-boutique.png.asset.json";
-import lahoreShot from "@/assets/lahore-eats.png.asset.json";
-import pakinvestShot from "@/assets/pakinvest.png.asset.json";
+const zaraShot = { url: "/portfolio/zara-boutique.png" };
+const lahoreShot = { url: "/portfolio/lahore-eats.png" };
+const pakinvestShot = { url: "/portfolio/pakinvest.png" };
 
 export const Route = createFileRoute("/")({
   head: () => ({
